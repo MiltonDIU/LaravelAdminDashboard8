@@ -19,6 +19,7 @@ class UsersTableSeeder extends Seeder
                 'verified'           => 1,
                 'verified_at'        => '2021-01-19 07:48:34',
                 'verification_token' => '',
+                'approved'           => 1,
             ],
             [
                 'id'             => 2,
@@ -29,6 +30,7 @@ class UsersTableSeeder extends Seeder
                 'verified'           => 1,
                 'verified_at'        => '2021-01-19 07:48:34',
                 'verification_token' => '',
+                'approved'           => 1,
             ],
         ];
 

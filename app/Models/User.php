@@ -47,6 +47,7 @@ class User extends Authenticatable
         'created_at',
         'updated_at',
         'deleted_at',
+        'approved',
     ];
 
     protected function serializeDate(DateTimeInterface $date)

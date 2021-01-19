@@ -71,6 +71,8 @@ return [
             'verified_at_helper'        => ' ',
             'verification_token'        => 'Verification token',
             'verification_token_helper' => ' ',
+            'approved'                  => 'Approved',
+            'approved_helper'           => ' ',
             'action' => 'Action',
         ],
     ],
