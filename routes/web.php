@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\PermissionsController;
 use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\Admin\AuditLogsController;
+use App\Http\Controllers\UserVerificationController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,7 +36,8 @@ Route::get('/home', function () {
 });
 
 
-Auth::routes(['register' => false]);
+Auth::routes(['register' => true]);
+Route::get('userVerification/{token}', [UserVerificationController::class ,'approve'])->name('userVerification');
 // Admin
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');

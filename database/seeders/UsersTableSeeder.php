@@ -16,6 +16,9 @@ class UsersTableSeeder extends Seeder
                 'email'          => 'milton2913@gmail.com',
                 'password'       => bcrypt('password'),
                 'remember_token' => null,
+                'verified'           => 1,
+                'verified_at'        => '2021-01-19 07:48:34',
+                'verification_token' => '',
             ],
             [
                 'id'             => 2,
@@ -23,6 +26,9 @@ class UsersTableSeeder extends Seeder
                 'email'          => 'user@localhost.com',
                 'password'       => bcrypt('password'),
                 'remember_token' => null,
+                'verified'           => 1,
+                'verified_at'        => '2021-01-19 07:48:34',
+                'verification_token' => '',
             ],
         ];
 
