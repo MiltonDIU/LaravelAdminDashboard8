@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\PermissionsController;
 use App\Http\Controllers\Auth\ChangePasswordController;
+use App\Http\Controllers\Admin\AuditLogsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,10 +36,6 @@ Route::get('/home', function () {
 
 Auth::routes(['register' => false]);
 // Admin
-Route::resources([
-    'admin/users' => UsersController::class,
-
-]);
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -49,12 +46,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
         'permissions' => PermissionsController::class,
         'roles' => RolesController::class,
         'users' => UsersController::class,
+        'audit-logs' => AuditLogsController::class,
     ]);
     Route::get('/', [HomeController::class, 'index']);
     Route::delete('permissions/destroy', [PermissionsController::class, 'massDestroy'])->name('permissions.massDestroy');
     Route::delete('roles/destroy', [RolesController::class, 'massDestroy'])->name('roles.massDestroy');
     Route::delete('users/destroy', [UsersController::class, 'massDestroy'])->name('users.massDestroy');
 
+    // Audit Logs
+    //Route::resource('audit-logs', 'AuditLogsController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
 // Change password

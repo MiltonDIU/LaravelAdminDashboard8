@@ -22,7 +22,7 @@ class UsersController extends Controller
             $users = User::all();
         } else {
             $users = User::whereHas('roles', function($q) {
-                $q->where('id', 3);
+                $q->where('id', 2);
             })->get();
         }
 

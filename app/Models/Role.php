@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use \DateTimeInterface;
-
+use App\Traits\Auditable;
 class Role extends Model
 {
-    use SoftDeletes, HasFactory;
+    use SoftDeletes, HasFactory,Auditable;
 
     public $table = 'roles';
 
