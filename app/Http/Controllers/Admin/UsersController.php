@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyUserRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\Profile;
 use App\Models\Role;
 use App\Models\User;
 use Gate;
@@ -88,5 +89,12 @@ class UsersController extends Controller
         User::whereIn('id', request('ids'))->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
+    }
+
+
+    public function profile($id){
+        abort_if(Gate::denies('user_profile'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $user = User::find($id);
+        return view('admin.users.profile', compact('user'));
     }
 }

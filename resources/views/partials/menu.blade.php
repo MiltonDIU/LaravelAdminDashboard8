@@ -67,6 +67,27 @@
                 </ul>
             </li>
         @endcan
+        @can('profile_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.profiles.index") }}" class="c-sidebar-nav-link {{ request()->is("admin.profiles") || request()->is("admin.profiles/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.profile.title') }}
+                </a>
+            </li>
+        @endcan
+
+        @can('profile_edit')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("profile.my-profile.edit") }}" class="c-sidebar-nav-link {{ request()->is("profile/my-profile") || request()->is("profile/my-profile/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('global.my_profile') }}
+                </a>
+            </li>
+        @endcan
 
         @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
             @can('profile_password_edit')
@@ -79,6 +100,17 @@
                 </li>
             @endcan
         @endif
+        @can('country_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.countries.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/countries") || request()->is("admin/countries/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.country.title') }}
+                </a>
+            </li>
+        @endcan
+
         <li class="c-sidebar-nav-item">
             <a href="#" class="c-sidebar-nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                 <i class="c-sidebar-nav-icon fas fa-fw fa-sign-out-alt">

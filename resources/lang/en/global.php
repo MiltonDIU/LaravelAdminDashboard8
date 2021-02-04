@@ -11,6 +11,8 @@ return [
     'delete'                               => 'Delete',
     'downloadFile'                         => 'Download file',
     'edit'                                 => 'Edit',
+    'profile'                              => 'Profile',
+    'my_profile'                           => 'My Profile',
     'emailVerificationSuccess'             => 'User email verified successfully',
     'entries'                              => 'Entries',
     'filterDate'                           => 'Filter by date',
