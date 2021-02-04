@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\AuditLogsController;
 use App\Http\Controllers\UserVerificationController;
 use App\Http\Controllers\Admin\CountriesController;
 use App\Http\Controllers\Admin\ProfilesController;
+use App\Http\Controllers\Admin\SettingsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,7 +47,19 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
         'audit-logs' => AuditLogsController::class,
         'countries' => CountriesController::class,
         'profiles' => ProfilesController::class,
+        //'settings' => SettingsController::class,
     ]);
+    // Settings
+//    Route::resources(['permissions' => SettingsController::class],['except' => ['create', 'store', 'show', 'destroy']]);
+    Route::post('settings/media', [SettingsController::class, 'storeMedia'])->name('settings.storeMedia');
+    Route::post('settings/ckmedia', [SettingsController::class, 'storeCKEditorImages'])->name('settings.storeCKEditorImages');
+
+    Route::get('settings', [SettingsController::class, 'edit'])->name('settings.edit');
+    Route::put('settings', [SettingsController::class, 'update'])->name('settings.update');
+
+
+
+
     Route::get('/', [HomeController::class, 'index']);
     Route::delete('permissions/destroy', [PermissionsController::class, 'massDestroy'])->name('permissions.massDestroy');
     Route::delete('roles/destroy', [RolesController::class, 'massDestroy'])->name('roles.massDestroy');
@@ -74,3 +87,7 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
     }
 });
 
+// Settings
+Route::post('settings/media', 'SettingsController@storeMedia')->name('settings.storeMedia');
+Route::post('settings/ckmedia', 'SettingsController@storeCKEditorImages')->name('settings.storeCKEditorImages');
+Route::resource('settings', 'SettingsController', ['except' => ['create', 'store', 'show', 'destroy']]);

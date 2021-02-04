@@ -67,10 +67,20 @@
                 </ul>
             </li>
         @endcan
+        @can('setting_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.settings.edit") }}" class="c-sidebar-nav-link {{ request()->is("admin/settings") || request()->is("admin/settings/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.setting.title') }}
+                </a>
+            </li>
+        @endcan
         @can('profile_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.profiles.index") }}" class="c-sidebar-nav-link {{ request()->is("admin.profiles") || request()->is("admin.profiles/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                    <i class="fa-fw fas fa-user c-sidebar-nav-icon">
 
                     </i>
                     {{ trans('cruds.profile.title') }}
