@@ -130,7 +130,7 @@
                     @endif
                     <span class="help-block">{{ trans('cruds.setting.fields.about_helper') }}</span>
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-4">
                     <label class="required" for="meta_keywords">{{ trans('cruds.setting.fields.meta_keywords') }}</label>
                     <input class="form-control {{ $errors->has('meta_keywords') ? 'is-invalid' : '' }}" type="text" name="meta_keywords" id="meta_keywords" value="{{ old('meta_keywords', $setting?$setting->meta_keywords:'') }}">
                     @if($errors->has('meta_keywords'))
@@ -141,7 +141,7 @@
                     <span class="help-block">{{ trans('cruds.setting.fields.meta_keywords_helper') }}</span>
                 </div>
 
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-4">
                     <label class="required" for="meta_description">{{ trans('cruds.setting.fields.meta_description') }}</label>
                     <input class="form-control {{ $errors->has('meta_description') ? 'is-invalid' : '' }}" type="text" name="meta_description" id="meta_description" value="{{ old('meta_description', $setting?$setting->meta_description:'') }}" required>
                     @if($errors->has('meta_description'))
@@ -151,6 +151,23 @@
                     @endif
                     <span class="help-block">{{ trans('cruds.setting.fields.meta_description_helper') }}</span>
                 </div>
+
+                    <div class="form-group col-md-4">
+                        <label class="required">{{ trans('cruds.setting.fields.admin_approval') }}</label>
+                        <select class="form-control {{ $errors->has('admin_approval') ? 'is-invalid' : '' }}" name="admin_approval" id="admin_approval" required>
+                            <option value disabled {{ old('admin_approval', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                            @foreach(App\Models\Setting::ADMIN_APPROVAL_SELECT as $key => $label)
+                                <option value="{{ $key }}" {{ old('admin_approval', $setting?$setting->admin_approval:'') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('admin_approval'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('admin_approval') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.setting.fields.admin_approval_helper') }}</span>
+                    </div>
+
 
                 <div class="form-group col-md-4">
                     <label class="required">{{ trans('cruds.setting.fields.maintenance_mode') }}</label>

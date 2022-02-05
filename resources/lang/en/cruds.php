@@ -193,6 +193,8 @@ return [
             'google_analytics_helper'         => ' ',
             'maintenance_mode'                => 'Maintenance Mode',
             'maintenance_mode_helper'         => ' ',
+            'admin_approval'                => 'Admin Approval for New User',
+            'admin_approval_helper'         => ' ',
             'maintenance_mode_title'          => 'Maintenance Mode Title',
             'maintenance_mode_title_helper'   => ' ',
             'maintenance_mode_content'        => 'Maintenance Mode Content',

@@ -20,7 +20,10 @@ class Setting extends Model implements HasMedia
         'Yes' => 'Yes',
         'No'  => 'No',
     ];
-
+    const ADMIN_APPROVAL_SELECT = [
+        '1' => 'Yes',
+        '0'  => 'No',
+    ];
     protected $dates = [
         'created_at',
         'updated_at',
@@ -48,6 +51,7 @@ class Setting extends Model implements HasMedia
         'copyright',
         'summary',
         'about',
+        'admin_approval',
         'created_at',
         'updated_at',
         'deleted_at',

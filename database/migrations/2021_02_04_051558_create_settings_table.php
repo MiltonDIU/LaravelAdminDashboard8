@@ -28,6 +28,7 @@ class CreateSettingsTable extends Migration
             $table->string('copyright');
             $table->longText('summary')->nullable();
             $table->longText('about')->nullable();
+            $table->enum('admin_approval',[0,1])->default('0');
             $table->timestamps();
         });
     }
